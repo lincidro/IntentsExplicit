@@ -14,9 +14,17 @@ public class SecondActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_second);
 
-        String valueFromMainActivity = getIntent().getStringExtra("hidden_id");
-
+        //
         tvMessage = findViewById(R.id.tv_message);
-        tvMessage.setText(valueFromMainActivity);
+
+        //1era forma
+        //String valueFromMainActivity = getIntent().getStringExtra("hidden_id");
+
+        //2da forma - Utilizando Bundle para obtener el valor
+        Bundle bundle = getIntent().getExtras();
+        if(bundle!=null){
+            String valueFromMainActivity = bundle.getString("hidden_id");
+            tvMessage.setText(valueFromMainActivity);
+        }
     }
 }
